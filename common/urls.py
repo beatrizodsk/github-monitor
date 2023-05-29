@@ -6,7 +6,9 @@ from .views import HomeView, LoginView
 app_name = 'common'
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('', LoginView.as_view(), name='login'),
+    path('home', HomeView.as_view(), name='home'),
+    path('home/<repo>', HomeView.as_view(), name='home'),
     path('login', LoginView.as_view(), name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
 ]
