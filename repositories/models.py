@@ -1,8 +1,8 @@
 from django.db import models
 
-
 class Repository(models.Model):
     name = models.CharField(max_length=100)
+    username = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
@@ -10,10 +10,9 @@ class Repository(models.Model):
     class Meta:
         verbose_name_plural = 'Repositories'
 
-
 class Commit(models.Model):
     message = models.TextField()
-    sha = models.CharField(max_length=100)
+    sha = models.CharField(max_length=100, unique=True)
     author = models.CharField(max_length=50)
     url = models.URLField(max_length=200)
     date = models.DateTimeField()

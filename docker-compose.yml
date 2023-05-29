@@ -6,6 +6,8 @@ services:
     env_file: .env
     volumes:
       - .db:/var/lib/postgresql/data
+    ports:
+      - '5433:5432'
 
   api:
     build: .
