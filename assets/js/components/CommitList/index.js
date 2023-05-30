@@ -40,7 +40,7 @@ const CommitList = ({ commits }) => (
         display: 'flex', justifyContent: 'center', alignItems: 'center', height: '15rem',
       }}
       >
-        There are no commits in this repository
+        No commits found in the last 30 days
       </p>
     )}
   </div>

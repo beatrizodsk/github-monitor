@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { useDispatch } from 'react-redux';
@@ -9,7 +10,11 @@ const renderField = ({
 }) => (
   <div>
     <input
-      {...input}
+      name={input.name}
+      value={input.value}
+      onChange={input.onChange}
+      onBlur={input.onBlur}
+      onFocus={input.onFocus}
       placeholder={placeholder}
       className={`${className} ${touched && invalid ? 'is-invalid' : ''}`}
       type={type}
@@ -24,11 +29,20 @@ const renderField = ({
 );
 
 renderField.propTypes = {
-  input: PropTypes.object.isRequired,
+  input: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    onBlur: PropTypes.func.isRequired,
+    onFocus: PropTypes.func.isRequired,
+  }).isRequired,
   placeholder: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  meta: PropTypes.object.isRequired,
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool,
+  }).isRequired,
 };
 
 const RepoCreateForm = (props) => {
@@ -79,7 +93,6 @@ const RepoCreateForm = (props) => {
             </button>
           </div>
         )}
-      {/* alterar o && pra o modo feito no index do commitlist */}
       {failureMessage && failureMessage.length > 0 && (
       <div
         className="alert alert-danger alert-dismissible fade show"

@@ -1,6 +1,6 @@
-var path = require('path');
-var webpack = require('webpack');
-var BundleTracker = require('webpack-bundle-tracker');
+const path = require('path');
+const webpack = require('webpack');
+const BundleTracker = require('webpack-bundle-tracker');
 
 module.exports = {
   mode: 'development',
@@ -17,7 +17,7 @@ module.exports = {
 
   module: {
     rules: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader'}
+      { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' },
     ],
   },
 
@@ -26,6 +26,6 @@ module.exports = {
       'node_modules',
       path.resolve(__dirname, 'assets/js'),
     ],
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
 };
