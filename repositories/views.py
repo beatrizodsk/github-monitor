@@ -51,9 +51,9 @@ class RepositoryView(APIView):
         repo_does_not_exist_in_github = not self.github_service.repo_exists(request.user, repo_name)
 
         if repo_name_already_exists:
-            return Response("Repository already exists.", status=status.HTTP_409_CONFLICT)
+            return Response("Repository was already added.", status=status.HTTP_409_CONFLICT)
         if repo_does_not_exist_in_github:
-            return Response("Repository does not exist in Github.", status=status.HTTP_404_NOT_FOUND)
+            return Response("Repository does not exist in your Github.", status=status.HTTP_404_NOT_FOUND)
 
         user_data = {"username": str(request.user)}
         data = {**request.data, **user_data}

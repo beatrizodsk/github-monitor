@@ -1,4 +1,5 @@
 import * as types from './ActionTypes';
+// eslint-disable-next-line import/no-cycle
 import * as commitAPI from '../api/CommitAPI';
 
 export const createRepositorySuccess = (response, successMessage) => {

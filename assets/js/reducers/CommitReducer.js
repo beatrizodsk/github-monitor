@@ -20,6 +20,9 @@ const commitReducer = (state = initialState, action) => {
         next: action.payload.next,
         previous: action.payload.previous,
       };
+    case types.GET_COMMITS_FAILURE: {
+      return { ...state, failureMessage: action.payload.failureMessage };
+    }
     case types.CREATE_REPOSITORY_SUCCESS: {
       return { ...state, successMessage: action.payload.successMessage };
     }
@@ -28,6 +31,9 @@ const commitReducer = (state = initialState, action) => {
     }
     case types.GET_REPOSITORIES_SUCCESS: {
       return { ...state, repositories: action.payload.repositories };
+    }
+    case types.GET_REPOSITORIES_FAILURE: {
+      return { ...state, failureMessage: action.payload.failureMessage };
     }
     case types.NEXT_PAGE: {
       if (state.page === state.count || state.page > state.count) {
